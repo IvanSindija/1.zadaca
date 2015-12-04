@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,6 +76,7 @@ namespace ConsoleApplication1
 
         }
 
+
         public int IndexOf(X item)
         {
             for (int i = 0; i < Count; i++)
@@ -113,6 +115,16 @@ namespace ConsoleApplication1
             Count--;
             return true;
 
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<X> GetEnumerator()
+        {
+            return new GenericListEnumerator<X>(this);
         }
     }
 }

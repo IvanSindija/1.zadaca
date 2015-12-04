@@ -22,7 +22,14 @@ namespace ConsoleApplication1
             Console.WriteLine(stringList.GetElement(1)); // World
             IGenericList<double> doubleList = new GenericList<double>();
             doubleList.Add(0.2);
-            doubleList.Add(0.7);            Console.Read();
+            doubleList.Add(0.7);            Console.WriteLine("test iteratora");            stringList = new GenericList<string>();
+            stringList.Add("Hello");
+            stringList.Add("World");
+            stringList.Add("!");
+            foreach (string value in stringList)
+            {
+                Console.WriteLine(value);
+            }            Console.Read();
         }
         public static void ListExample(IIntegerList listOfIntegers)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    public interface IGenericList<X>
+    public interface IGenericList<X> : IEnumerable<X>
     {
         /// <summary>
         /// Adds an item to the collection.
@@ -42,5 +42,6 @@ namespace ConsoleApplication1
         /// Determines whether the collection contains a specific value.
         /// </summary>
         bool Contains(X item);
-    }
+    }
+
 }
