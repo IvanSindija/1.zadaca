@@ -9,53 +9,49 @@ namespace ConsoleApplication1
     class IntegerList : IIntegerList
     {
         private int[] _internalStorage;
-        private int _numOfItems;
 
         public IntegerList()
         {
             _internalStorage = new int[4];
-            _numOfItems = 0;
+            Count = 0;
         }
         public IntegerList(int sizeOfLIst)
         {
             _internalStorage = new int[sizeOfLIst];
-            _numOfItems=0;
+            Count=0;
         }
 
         public int Count
         {
-            get
-            {
-                return _numOfItems;
-            }
+            get; set;
             
         }
 
         public void Add(int item)
         {
-            if (_internalStorage.Length  <= _numOfItems+1)
+            if (_internalStorage.Length  < Count+1)
             {
                 int[] tempArray = new int[2*_internalStorage.Length];
-                for(int i = 0; i < _numOfItems; i++)
+                for(int i = 0; i < Count; i++)
                 {
                     tempArray[i] = _internalStorage[i];
                 }
                 _internalStorage = tempArray;
             }
-            _internalStorage[_numOfItems] = item;
-            _numOfItems++;
+            _internalStorage[Count] = item;
+            Count++;
         }
 
         public void Clear()
         {
-            int[] temp = new int[_numOfItems];
+            int[] temp = new int[Count];
             _internalStorage=temp;
-            _numOfItems = 0;
+            Count = 0;
         }
 
         public bool Contains(int item)
         {
-            for (int i = 0; i < _numOfItems; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (_internalStorage[i].Equals(item))
                     return true;
@@ -66,7 +62,7 @@ namespace ConsoleApplication1
         public int GetElement(int index)
         {
 
-            if(index <=_numOfItems)
+            if(index <=Count)
 {
                 return _internalStorage[index];
             }
@@ -74,12 +70,13 @@ namespace ConsoleApplication1
 {
                 throw new IndexOutOfRangeException();
            
-            }
+            }
+
         }
 
         public int IndexOf(int item)
         {
-            for (int i = 0; i < _numOfItems; i++)
+            for (int i = 0; i < Count; i++)
                 if (_internalStorage[i].Equals(item))
                     return i;
             return (-1);
@@ -88,7 +85,7 @@ namespace ConsoleApplication1
         public bool Remove(int item)
         {
             int j = 0;
-            for(int i=0; i < _numOfItems; i++)
+            for(int i=0; i < Count; i++)
             {
                 if (_internalStorage[i].Equals(item))
                 {
@@ -96,20 +93,26 @@ namespace ConsoleApplication1
                     _internalStorage[i] = _internalStorage[i + j];
                 }
                 _internalStorage[i] = _internalStorage[i + j];
-            }            _numOfItems = _numOfItems - j;            if (j > 0)                return true;            return false;
+            }
+         
+            Count = Count - j;
+            if (j > 0)
+                return true;
+            return false;
         }
 
         public bool RemoveAt(int index)
         {
-            if(index>_numOfItems)
+            if(index>Count)
             {
                 return false;
             }
-            for (int i = index; i < _numOfItems; i++)
+            for (int i = index; i < Count; i++)
                 _internalStorage[i]=_internalStorage[i+1];
-            _internalStorage[_numOfItems]=0;
-            _numOfItems--;
-            return true;
+            _internalStorage[Count]=0;
+            Count--;
+            return true;
+
         }
     }
 }

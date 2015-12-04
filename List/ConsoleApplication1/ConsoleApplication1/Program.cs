@@ -12,6 +12,17 @@ namespace ConsoleApplication1
         {
             IIntegerList x1 = new IntegerList();
             ListExample(x1);
+            IGenericList<string> stringList = new GenericList<string>();
+            stringList.Add("Hello");
+            stringList.Add("World");
+            stringList.Add("!");
+            Console.WriteLine(stringList.Count); // 3
+            Console.WriteLine(stringList.Contains("Hello")); // true
+            Console.WriteLine(stringList.IndexOf("Hello")); // 0
+            Console.WriteLine(stringList.GetElement(1)); // World
+            IGenericList<double> doubleList = new GenericList<double>();
+            doubleList.Add(0.2);
+            doubleList.Add(0.7);            Console.Read();
         }
         public static void ListExample(IIntegerList listOfIntegers)
         {
@@ -37,7 +48,9 @@ namespace ConsoleApplication1
             listOfIntegers.Clear();
             Console.WriteLine(listOfIntegers.Count);
             // 0
-            Console.Read();
-        }
+
+
+        }
+
     }
 }
