@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ConsoleApplication1
+namespace zad1
 {
     internal class GenericListEnumerator<T> : IEnumerator<T>
     {

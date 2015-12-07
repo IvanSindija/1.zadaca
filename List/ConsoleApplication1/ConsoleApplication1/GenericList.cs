@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace zad1
 {
     class GenericList<X> : IGenericList<X>
 
@@ -124,7 +124,8 @@ namespace ConsoleApplication1
 
         public IEnumerator<X> GetEnumerator()
         {
-            return new GenericListEnumerator<X>(this);
+            return new GenericListEnumerator<X>(this);
+
         }
     }
 }
